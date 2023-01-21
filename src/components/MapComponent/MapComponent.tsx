@@ -1,3 +1,4 @@
+import { InformationContainer } from '../InformationContainer/InformationContainer';
 import './MapComponent.css';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
@@ -13,5 +14,7 @@ export const MapComponent = () => {
       A pretty CSS3 popup. <br /> Easily customizable.
     </Popup>
   </Marker>
+
+  <InformationContainer />
 </MapContainer>;
 };

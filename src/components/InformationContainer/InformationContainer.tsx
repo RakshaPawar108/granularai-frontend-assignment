@@ -1,9 +1,9 @@
+import './InformationContainer.css'
+
 export const InformationContainer = () => {
-    return <div>
-        <p>Information</p>
-        <div>
-            <p>Location: Boston</p>
-            <p>Population: 123456789</p>
-        </div>
+    return <div className='information-container'>
+        <span className='container-heading'><strong>Information</strong></span>
+        <span><strong>Location:</strong>  Boston</span>
+        <span><strong>Population:</strong>  123456789</span>
     </div>
 }
