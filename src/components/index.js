@@ -3,3 +3,4 @@ export { InformationContainer } from "./InformationContainer/InformationContaine
 export { SearchBar } from "./SearchBar/SearchBar";
 export { OptionList } from "./OptionList/OptionList";
 export { HistoryButton } from "./HistoryButton/HistoryButton";
+export { HistoryList } from "./HistoryList/HistoryList";
