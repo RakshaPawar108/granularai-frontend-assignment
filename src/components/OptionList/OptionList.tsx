@@ -1,11 +1,22 @@
-import './OptionList.css'
+import { SearchData } from "../../data/searchdata";
+import "./OptionList.css";
 
-export const OptionList = () => {
+type SearchResults = SearchData[];
+
+type Props = {
+  options: SearchResults;
+};
+
+export const OptionList = ({ options }: Props) => {
   return (
-    <div className="option-list">
-      <div className="option-item">Option Name</div>
-      <div className="option-item">Option Name</div>
-      <div className="option-item">Option Name</div>
-    </div>
+    <>
+      {options.length > 0 && (
+        <div className="option-list">
+          {options.map((option) => (
+            <div key={option.place_id} className="option-item">{option.display_name}</div>
+          ))}
+        </div>
+      )}
+    </>
   );
 };

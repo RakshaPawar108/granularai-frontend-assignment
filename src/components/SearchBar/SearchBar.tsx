@@ -7,10 +7,10 @@ type Props = {
   handleStringChange: (stringVal: string) => void;
 };
 
-export const SearchBar: React.FC<Props> = ({
+export const SearchBar = ({
   searchQuery,
   handleStringChange,
-}) => {
+}: Props) => {
   return (
     <div className="searchbar-container">
       <input

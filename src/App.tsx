@@ -36,7 +36,9 @@ function App() {
         searchQuery={searchQuery}
         handleStringChange={handleStringChange}
       />
-      <OptionList />
+
+      {optionList.length > 0 && <OptionList options={optionList} />}
+
       <HistoryList />
       <MapComponent center={center} />
     </div>
