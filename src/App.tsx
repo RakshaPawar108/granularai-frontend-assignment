@@ -17,7 +17,7 @@ function App() {
     const searchQuery = url.searchParams.get("search");
     if (searchQuery) {
       setSearchQuery(searchQuery);
-    } else setSearchQuery("Boston");
+    } else setSearchQuery("Boston, Massachusetts");
   }, []);
 
   useEffect(() => {
