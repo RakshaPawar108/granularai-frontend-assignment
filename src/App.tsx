@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import { MapComponent, SearchBar } from './components';
+import { MapComponent, OptionList, SearchBar } from './components';
 
 function App() {
   return (
     <div className="App">
       <SearchBar />
+      <OptionList />
       <MapComponent />
-      
     </div>
   );
 }
