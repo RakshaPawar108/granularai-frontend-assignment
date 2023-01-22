@@ -1,0 +1,28 @@
+.searchbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.searchbar {
+  padding: 1.5rem;
+  background-color: #ddd;
+  color: #000;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: 50%;
+  font-size: 1.2rem;
+  font-style: inherit;
+  font-weight: bold;
+}
+
+.searchbar:active,
+.searchbar:focus {
+  border: none;
+}

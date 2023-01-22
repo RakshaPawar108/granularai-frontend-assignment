@@ -1,3 +1,9 @@
+import "./SearchBar.css";
+
 export const SearchBar = () => {
-    return <input type="text" placeholder="Search" />
-}
+  return (
+    <div className="searchbar-container">
+      <input type="text" placeholder="Search" className='searchbar' />
+    </div>
+  );
+};
