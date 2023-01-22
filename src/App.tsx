@@ -10,6 +10,7 @@ function App() {
   const [optionList, setOptionList] = useState<SearchResults>([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [center, setCenter] = useState<[number, number]>([42.3601, -71.0589]);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -37,7 +38,7 @@ function App() {
       />
       <OptionList />
       <HistoryList />
-      <MapComponent />
+      <MapComponent center={center} />
     </div>
   );
 }
