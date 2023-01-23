@@ -6,7 +6,8 @@ type SearchResults = SearchData[];
 export const getData = async (
   queryString: string,
   setOptionList: any,
-  setLoading: any
+  setLoading: any,
+  setNewData: any
 ) => {
   let options: SearchResults;
   try {
@@ -18,6 +19,9 @@ export const getData = async (
         setOptionList(
           options.filter((option) => option.type === "administrative")
         );
+        if(localStorage.getItem('selected') === 'true' && options.length > 0) {
+          setNewData(options[0])
+        }
       }
     }
   } catch (err) {
