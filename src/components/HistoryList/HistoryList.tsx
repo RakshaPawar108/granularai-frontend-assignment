@@ -11,7 +11,7 @@ export const HistoryList = ({
   showHistoryList,
   setShowHistoryList,
   historyList,
-  setSearchQuery
+  setSearchQuery,
 }: Props) => {
   return (
     <>
@@ -32,10 +32,20 @@ export const HistoryList = ({
                     setShowHistoryList(false);
                   }}
                 >
-                  {historyItem} <div className="link-share-button">Share</div>
+                  {historyItem}{" "}
+                  <div
+                    className="link-share-button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        `${window.location.host}?search=${historyItem}`
+                      );
+                      alert("Link Copied");
+                    }}
+                  >
+                    Share
+                  </div>
                 </li>
               ))}
-
             </div>
           </div>
         </div>
