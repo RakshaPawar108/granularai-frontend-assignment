@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { HistoryList, MapComponent, OptionList, SearchBar } from "./components";
+import { HistoryList, InformationContainer, MapComponent, OptionList, SearchBar } from "./components";
 import { SearchData } from "./data/searchdata";
 import { getData } from "./utils";
 
@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [center, setCenter] = useState<[number, number]>([42.3601, -71.0589]);
+  const [newData, setNewData] = useState<SearchData | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -18,13 +19,27 @@ function App() {
     if (searchQuery) {
       setSearchQuery(searchQuery);
     } else setSearchQuery("Boston, Massachusetts");
+    localStorage.setItem("selected", "true");
   }, []);
 
-  useEffect(() => {
-    if (searchQuery.length > 3) {
-      getData(searchQuery, setOptionList, setLoading);
+  const clickHandler = () => {
+    if (searchQuery.length > 2) {
+      getData(searchQuery, setOptionList, setLoading, setNewData);
     }
-  }, [searchQuery]);
+  }
+
+  // useEffect(() => {
+  //   if (searchQuery.length > 2) {
+  //     getData(searchQuery, setOptionList, setLoading, setNewData);
+  //   }
+  // }, [searchQuery]);
+
+  useEffect(() => {
+    if (newData) {
+      setCenter([Number(newData.lat), Number(newData.lon)]);
+      // setOptionList([]);
+    }
+  }, [newData]);
 
   const handleStringChange = (stringVal: string) => {
     setSearchQuery(stringVal);
@@ -35,12 +50,16 @@ function App() {
       <SearchBar
         searchQuery={searchQuery}
         handleStringChange={handleStringChange}
+        clickHandler={clickHandler}
       />
 
-      {optionList.length > 0 && <OptionList options={optionList} />}
+      {optionList.length > 0 && (
+        <OptionList options={optionList} setNewData={setNewData} />
+      )}
 
       <HistoryList />
       <MapComponent center={center} />
+      <InformationContainer newData={newData} />
     </div>
   );
 }
