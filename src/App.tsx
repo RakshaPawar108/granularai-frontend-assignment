@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { HistoryList, InformationContainer, MapComponent, OptionList, SearchBar } from "./components";
+import {
+  HistoryList,
+  InformationContainer,
+  MapComponent,
+  OptionList,
+  SearchBar,
+} from "./components";
 import { SearchData } from "./data/searchdata";
 import { getData } from "./utils";
 
@@ -26,7 +32,7 @@ function App() {
     if (searchQuery.length > 2) {
       getData(searchQuery, setOptionList, setLoading, setNewData);
     }
-  }
+  };
 
   // useEffect(() => {
   //   if (searchQuery.length > 2) {
@@ -54,7 +60,11 @@ function App() {
       />
 
       {optionList.length > 0 && (
-        <OptionList options={optionList} setNewData={setNewData} />
+        <OptionList
+          options={optionList}
+          setNewData={setNewData}
+          loading={loading}
+        />
       )}
 
       <HistoryList />

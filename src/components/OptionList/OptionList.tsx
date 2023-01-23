@@ -6,13 +6,15 @@ type SearchResults = SearchData[];
 type Props = {
   options: SearchResults;
   setNewData: any;
+  loading:boolean;
 };
 
-export const OptionList = ({ options, setNewData }: Props) => {
+export const OptionList = ({ options, setNewData, loading }: Props) => {
   return (
     <>
       {options.length > 0 && (
         <div className="option-list">
+          {loading && <div>Loading...</div>}
           {options.map((option) => (
             <div
               key={option.place_id}

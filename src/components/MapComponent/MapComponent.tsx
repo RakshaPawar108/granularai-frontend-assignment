@@ -1,4 +1,3 @@
-import { InformationContainer } from "../InformationContainer/InformationContainer";
 import "./MapComponent.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
