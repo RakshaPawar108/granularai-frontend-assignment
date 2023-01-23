@@ -1,7 +1,13 @@
-import './HistoryButton.css'
+import "./HistoryButton.css";
 
-export const HistoryButton = () => {
-    return <div className="history-button">
-        History
+type Props = {
+  historyClickHandler: () => void;
+};
+
+export const HistoryButton = ({ historyClickHandler }: Props) => {
+  return (
+    <div className="history-button" onClick={historyClickHandler}>
+      History
     </div>
-}
+  );
+};

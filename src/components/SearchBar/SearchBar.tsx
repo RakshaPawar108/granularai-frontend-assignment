@@ -6,12 +6,14 @@ type Props = {
   searchQuery: string;
   handleStringChange: (stringVal: string) => void;
   clickHandler: () => void;
+  historyClickHandler: () => void;
 };
 
 export const SearchBar = ({
   searchQuery,
   handleStringChange,
-  clickHandler
+  clickHandler,
+  historyClickHandler
 }: Props) => {
   return (
     <div className="searchbar-container">
@@ -23,7 +25,7 @@ export const SearchBar = ({
         onChange={(e) => handleStringChange(e.target.value)}
       />
       <div className="search-button" onClick={clickHandler}>Search</div>
-      <HistoryButton />
+      <HistoryButton historyClickHandler={historyClickHandler} />
     </div>
   );
 };
