@@ -5,11 +5,13 @@ import "./SearchBar.css";
 type Props = {
   searchQuery: string;
   handleStringChange: (stringVal: string) => void;
+  clickHandler: () => void;
 };
 
 export const SearchBar = ({
   searchQuery,
   handleStringChange,
+  clickHandler
 }: Props) => {
   return (
     <div className="searchbar-container">
@@ -20,6 +22,7 @@ export const SearchBar = ({
         value={searchQuery}
         onChange={(e) => handleStringChange(e.target.value)}
       />
+      <div className="search-button" onClick={clickHandler}>Search</div>
       <HistoryButton />
     </div>
   );
