@@ -34,8 +34,6 @@ export const MapComponent = ({ center }: Props) => {
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
       </Marker>
-
-      <InformationContainer />
     </MapContainer>
   );
 };
