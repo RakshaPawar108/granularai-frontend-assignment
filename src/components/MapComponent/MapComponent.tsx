@@ -1,30 +1,20 @@
 import "./MapComponent.css";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMap,
-  Polygon,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
 import { SearchData } from "../../data/searchdata";
 
 type Props = {
   center: [number, number];
   newData: SearchData | null;
+  ChangeLocation: React.ReactNode;
+  changeLocation: boolean;
 };
 
-type LocationProps = {
-  center: [number, number];
-  zoom: number;
-};
-
-export const MapComponent = ({ center, newData }: Props) => {
-  function ChangeLocation({ center, zoom }: LocationProps) {
-    const map = useMap();
-    map.flyTo(center);
-    return null;
-  }
+export const MapComponent = ({
+  center,
+  newData,
+  ChangeLocation,
+  changeLocation,
+}: Props) => {
   return (
     <MapContainer
       className="map"
@@ -36,7 +26,7 @@ export const MapComponent = ({ center, newData }: Props) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <ChangeLocation center={center} zoom={11} />
+      {changeLocation && ChangeLocation}
       <Marker position={center}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.

@@ -9,6 +9,7 @@ import {
 } from "./components";
 import { SearchData } from "./data/searchdata";
 import { getData } from "./utils";
+import { useMap } from "react-leaflet";
 
 type SearchResults = SearchData[];
 
@@ -22,31 +23,28 @@ function App() {
     JSON.parse(localStorage.getItem("history") ?? "[]")
   );
   const [showHistoryList, setShowHistoryList] = useState(false);
+  const [changeLocation, setChangeLocation] = useState(false);
 
   useEffect(() => {
     const url = new URL(window.location.href);
     const searchQuery = url.searchParams.get("search");
     if (searchQuery) {
       setSearchQuery(searchQuery);
-    } else setSearchQuery("Boston, Massachusetts");
+    } else setSearchQuery("Boston, MA");
     localStorage.setItem("selected", "true");
   }, []);
 
-  const clickHandler = () => {
-    if (searchQuery.length > 2) {
-      getData(searchQuery, setOptionList, setLoading, setNewData);
-    }
-  };
+  const clickHandler = () => {};
 
   const historyClickHandler = () => {
     setShowHistoryList(!showHistoryList);
   };
 
-  // useEffect(() => {
-  //   if (searchQuery.length > 2) {
-  //     getData(searchQuery, setOptionList, setLoading, setNewData);
-  //   }
-  // }, [searchQuery]);
+  useEffect(() => {
+    if (searchQuery.length > 2) {
+      getData(searchQuery, setOptionList, setLoading, setNewData);
+    }
+  }, [searchQuery]);
 
   useEffect(() => {
     if (newData) {
@@ -71,6 +69,12 @@ function App() {
     setSearchQuery(stringVal);
   };
 
+  function ChangeLocation() {
+    const map = useMap();
+    map.flyTo(center, 11);
+    return null;
+  }
+
   return (
     <div className="App">
       <SearchBar
@@ -78,6 +82,7 @@ function App() {
         handleStringChange={handleStringChange}
         clickHandler={clickHandler}
         historyClickHandler={historyClickHandler}
+        setChangeLocation={setChangeLocation}
       />
 
       {optionList.length > 0 && (
@@ -96,7 +101,7 @@ function App() {
         setSearchQuery={setSearchQuery}
         historyList={historyList}
       />
-      <MapComponent center={center} newData={newData} />
+      <MapComponent center={center} newData={newData} ChangeLocation={<ChangeLocation />} changeLocation={changeLocation} />
       <InformationContainer newData={newData} />
     </div>
   );

@@ -17,7 +17,9 @@ export const OptionList = ({
   loading,
   setSearchQuery,
   setOptionList,
+  
 }: Props) => {
+  
   return (
     <>
       {options.length > 0 && (
@@ -29,7 +31,7 @@ export const OptionList = ({
               className="option-item"
               onClick={() => {
                 setNewData(option);
-                setSearchQuery(option.display_name);
+                setSearchQuery(option.namedetails.name);
                 setOptionList([]);
               }}
             >

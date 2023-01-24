@@ -7,13 +7,15 @@ type Props = {
   handleStringChange: (stringVal: string) => void;
   clickHandler: () => void;
   historyClickHandler: () => void;
+  setChangeLocation: any;
 };
 
 export const SearchBar = ({
   searchQuery,
   handleStringChange,
   clickHandler,
-  historyClickHandler
+  historyClickHandler,
+  setChangeLocation,
 }: Props) => {
   return (
     <div className="searchbar-container">
@@ -24,7 +26,9 @@ export const SearchBar = ({
         value={searchQuery}
         onChange={(e) => handleStringChange(e.target.value)}
       />
-      <div className="search-button" onClick={clickHandler}>Search</div>
+      <div className="search-button" onClick={() => setChangeLocation(true)}>
+        Fly To Location
+      </div>
       <HistoryButton historyClickHandler={historyClickHandler} />
     </div>
   );
