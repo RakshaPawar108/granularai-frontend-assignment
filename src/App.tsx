@@ -85,6 +85,8 @@ function App() {
           options={optionList}
           setNewData={setNewData}
           loading={loading}
+          setSearchQuery={setSearchQuery}
+          setOptionList={setOptionList}
         />
       )}
 
@@ -94,7 +96,7 @@ function App() {
         setSearchQuery={setSearchQuery}
         historyList={historyList}
       />
-      <MapComponent center={center} />
+      <MapComponent center={center} newData={newData} />
       <InformationContainer newData={newData} />
     </div>
   );

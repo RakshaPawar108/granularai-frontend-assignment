@@ -17,7 +17,7 @@ export const InformationContainer = ({ newData }: Props) => {
             <strong>Location:</strong> {newData.display_name}
           </span>
           <span>
-            <strong>Population:</strong> {newData.extratags.population}
+            <strong>Population:</strong> {newData.extratags.population ?? 'unknown'}
           </span>
         </div>
       )}

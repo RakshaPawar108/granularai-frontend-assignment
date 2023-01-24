@@ -6,10 +6,18 @@ type SearchResults = SearchData[];
 type Props = {
   options: SearchResults;
   setNewData: any;
-  loading:boolean;
+  loading: boolean;
+  setSearchQuery: any;
+  setOptionList: any;
 };
 
-export const OptionList = ({ options, setNewData, loading }: Props) => {
+export const OptionList = ({
+  options,
+  setNewData,
+  loading,
+  setSearchQuery,
+  setOptionList,
+}: Props) => {
   return (
     <>
       {options.length > 0 && (
@@ -19,7 +27,11 @@ export const OptionList = ({ options, setNewData, loading }: Props) => {
             <div
               key={option.place_id}
               className="option-item"
-              onClick={() => setNewData(option)}
+              onClick={() => {
+                setNewData(option);
+                setSearchQuery(option.display_name);
+                setOptionList([]);
+              }}
             >
               {option.display_name}
             </div>
