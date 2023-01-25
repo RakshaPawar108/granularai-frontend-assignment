@@ -7,9 +7,11 @@ import {
   OptionList,
   SearchBar,
 } from "./components";
+
 import { SearchData } from "./data/searchdata";
 import { getData } from "./utils";
 import { useMap } from "react-leaflet";
+import { ToastContainer } from "react-toastify";
 
 type SearchResults = SearchData[];
 
@@ -33,8 +35,6 @@ function App() {
     } else setSearchQuery("Boston, MA");
     localStorage.setItem("selected", "true");
   }, []);
-
-  const clickHandler = () => {};
 
   const historyClickHandler = () => {
     setShowHistoryList(!showHistoryList);
@@ -72,6 +72,7 @@ function App() {
   function ChangeLocation() {
     const map = useMap();
     map.flyTo(center, 11);
+    setChangeLocation(false);
     return null;
   }
 
@@ -80,7 +81,6 @@ function App() {
       <SearchBar
         searchQuery={searchQuery}
         handleStringChange={handleStringChange}
-        clickHandler={clickHandler}
         historyClickHandler={historyClickHandler}
         setChangeLocation={setChangeLocation}
       />
@@ -101,7 +101,13 @@ function App() {
         setSearchQuery={setSearchQuery}
         historyList={historyList}
       />
-      <MapComponent center={center} newData={newData} ChangeLocation={<ChangeLocation />} changeLocation={changeLocation} />
+      <MapComponent
+        center={center}
+        newData={newData}
+        ChangeLocation={<ChangeLocation />}
+        changeLocation={changeLocation}
+      />
+      <ToastContainer style={{ fontSize: "1.5rem" }} />
       <InformationContainer newData={newData} />
     </div>
   );

@@ -5,7 +5,6 @@ import "./SearchBar.css";
 type Props = {
   searchQuery: string;
   handleStringChange: (stringVal: string) => void;
-  clickHandler: () => void;
   historyClickHandler: () => void;
   setChangeLocation: any;
 };
@@ -13,7 +12,6 @@ type Props = {
 export const SearchBar = ({
   searchQuery,
   handleStringChange,
-  clickHandler,
   historyClickHandler,
   setChangeLocation,
 }: Props) => {

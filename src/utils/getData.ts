@@ -1,5 +1,8 @@
 import { fetchData } from "../service";
 import { SearchData } from "../data/searchdata";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+
 
 type SearchResults = SearchData[];
 
@@ -19,13 +22,22 @@ export const getData = async (
         setOptionList(
           options.filter((option) => option.type === "administrative")
         );
-        if(localStorage.getItem('selected') === 'true' && options.length > 0) {
-          setNewData(options[0])
+        if (localStorage.getItem("selected") === "true" && options.length > 0) {
+          setNewData(options[0]);
         }
       }
     }
   } catch (err) {
-    console.log(err);
+    toast.error("There was some error! Please try again later.", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   } finally {
     setLoading(false);
   }

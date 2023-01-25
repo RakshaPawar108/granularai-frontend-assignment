@@ -1,3 +1,5 @@
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import "./HistoryList.css";
 
 type Props = {
@@ -39,7 +41,16 @@ export const HistoryList = ({
                       navigator.clipboard.writeText(
                         `${window.location.host}?search=${historyItem}`
                       );
-                      alert("Link Copied");
+                      toast("Link Copied to Clipboard", {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                      });
                     }}
                   >
                     Share
