@@ -25,9 +25,10 @@ export const HistoryList = ({
           <div className="list-popup-card">
             <div className="popup-heading">History</div>
             <div className="popup-list-items">
-              {historyList.map((historyItem) => (
+              {historyList.map((historyItem, idx) => (
                 <li
                   className="popup-list-item"
+                  key={idx}
                   onClick={() => {
                     localStorage.setItem("selected", "true");
                     setSearchQuery(historyItem);

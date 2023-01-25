@@ -7,7 +7,6 @@ import {
   OptionList,
   SearchBar,
 } from "./components";
-
 import { SearchData } from "./data/searchdata";
 import { getData } from "./utils";
 import { useMap } from "react-leaflet";
@@ -49,15 +48,6 @@ function App() {
   useEffect(() => {
     if (newData) {
       setCenter([Number(newData.lat), Number(newData.lon)]);
-      // setOptionList([]);
-      setHistoryList((historyList) => [
-        ...new Set([
-          ...historyList,
-          newData.namedetails["name:en"] ??
-            newData.namedetails.name ??
-            newData.display_name,
-        ]),
-      ]);
     }
   }, [newData]);
 
@@ -83,6 +73,8 @@ function App() {
         handleStringChange={handleStringChange}
         historyClickHandler={historyClickHandler}
         setChangeLocation={setChangeLocation}
+        newData={newData}
+        setHistoryList={setHistoryList}
       />
 
       {optionList.length > 0 && (
