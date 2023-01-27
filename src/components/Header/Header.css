@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-self: flex-start;
+  width: 11%;
+  margin: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.header-text {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.header-icon {
+  height: 5rem;
+  width: 100%;
+}
