@@ -5,7 +5,6 @@ export interface SearchData {
     lon: number,
     type: string,
     display_name: string,
-    icon: string,
     namedetails: {
         name: string,
         "name:en": string
