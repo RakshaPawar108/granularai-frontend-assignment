@@ -85,13 +85,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Demo
 
-![Demo1](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Demo1](./src/assets/gifs/granularai-demo-1.gif)
 
 
-![Demo2](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Demo2](./src/assets/gifs/granularai-demo-2.gif)
 
-
-![Demo3](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## About the Developer
