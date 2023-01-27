@@ -17,3 +17,9 @@
   height: 5rem;
   width: 100%;
 }
+
+@media screen  and (max-width: 899px){
+  .header{
+    display: none;
+  }
+}
